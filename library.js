@@ -14,8 +14,8 @@ const books = [
   ]
 
 
-function Book(name,author,pages,read){ // Book Constructor
-  return {name,author,pages,read}
+function Book(title,author,pages,read){ // Book Constructor
+  return {title,author,pages,read}
 
 }
 
@@ -25,19 +25,40 @@ const listOfBooks = document.getElementById('listOfBooks')
 function displayBooks(books){
   
   books.map((book)=>{
+
+    
     const li = document.createElement('li')
-    li.innerText = book.title
+    li.innerText = book.title + ` - ` + book.author + ` - `
     listOfBooks.appendChild(li)
     })   
    
   }
  
  function addBook(){
- 
-  const book = new Book('book3','joe','22','Yes')
+
+  let title = document.getElementById('book-title').value
+  let author = document.getElementById('book-author').value
+  let pages = document.getElementById('book-pages').value
+  let read = document.getElementById('answer').value
+
+  const book = new Book(title,author,pages,read)
   books.push(book)
   console.log(books)
+
+  listOfBooks.innerText = ``
   displayBooks(books)
+
+  console.log(title)
+  document.getElementById('book-title').value = ``
+  document.getElementById('book-author').value = ``
+  document.getElementById('book-pages').value = ``
+  document.getElementById('answer').value = ``
+
+  //Table work
+
+  document.getElementById('table')
+
+
  } 
 
 
