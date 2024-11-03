@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="library.js" defer></script>
+</head>
+<body>
+    <aside class="hidden">
+        <form>
+          <div class="form-input">
+            <label for="book-title">Book Title</label>
+            <input id="book-title" type="text" />
+          </div>
+          <div class="form-input">
+            <label for="book-author">Book Author</label>
+            <input id="book-author" type="text" />
+          </div>
+          <div class="form-input">
+            <label for="book-pages">Pages</label>
+            <input id="book-pages" type="number" />
+          </div>
+          <div class="form-select">
+            <label for="answer">Have you read it?</label>
+            <select name="answer" id="answer">
+              <option value="">Please choose:</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <div class="form-buttons">
+            <button type="button" onclick=addBook() class="submit-btn">Add book</button>
+            <button type="reset" class="reset-btn">Cancel</button>
+          </div>
+        </form>
+      </aside>
+
+      <main>
+        <div id="library">
+          <p><button type="button" class="new-book-btn">New Book</button></p>
+          <ul id="listOfBooks"></ul>
+        </div>
+      </main>
+
+    
+    
+</body>
+</html>
