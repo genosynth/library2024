@@ -3,13 +3,13 @@ const books = [
       title: 'Book',
       author: 'Name',
       pages: '200',
-      read: 'Yes'
+      read: 'yes'
     },
     {
       title: 'Book2',
       author: 'Name2',
       pages: '120',
-      read: 'No'
+      read: 'no'
     }
   ]
 
@@ -23,57 +23,78 @@ const listOfBooks = document.getElementById('listOfBooks')
 //console.log(library)
 
 function displayBooks(books){
+  const table = document.getElementById("table")
+  table.innerHTML=`  <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Pages</th>
+                <th>Read</th>
+              </tr>
+              <tr>
+                <td>Life</td>
+                <td>Tony G</td>
+                <td>35</td>
+                <td>Yes</td>
+              </tr>`
   
   books.map((book)=>{
-
     
-    const li = document.createElement('li')
-    li.innerText = book.title + ` - ` + book.author + ` - `
-    listOfBooks.appendChild(li)
-    })   
+  
+  const tr = document.createElement("tr")
+  const td = document.createElement("td")
+  td.innerText = book.title //Title
+  tr.appendChild(td)
+  const td2 = document.createElement("td")
+  td2.innerText=book.author  //Author
+  tr.appendChild(td2)
+  const td3 = document.createElement("td")
+  td3.innerText=book.pages  //Pages
+  tr.appendChild(td3)
+  const td4 = document.createElement("button")
+  td4.innerText=book.read //Read
+  tr.appendChild(td4)
+  table.appendChild(tr)
+  td4.addEventListener("click", function(){
+    //console.log(td4.innerText)
+    if (book.read=="yes"){       
+      book.read="no"
+      displayBooks(books)
+      console.log(books)
+    } else { 
+      book.read='yes'
+      displayBooks(books)
+      console.log(books)
+    }
+  
+    
+    })
+  //td4.innerText=document.getElementById("answer").value //Read
+ 
+  })   
    
   }
  
  function addBook(){
+
+  
+
 
   let title = document.getElementById('book-title').value
   let author = document.getElementById('book-author').value
   let pages = document.getElementById('book-pages').value
   let read = document.getElementById('answer').value
 
+  if (title==`` | author==`` | pages==`` |read==`` ){return alert("Please insert all data.")}
+
   const book = new Book(title,author,pages,read)
   books.push(book)
-  console.log(books)
-
-  listOfBooks.innerText = ``
-  displayBooks(books)
-
-  console.log(title)
-
-  //Table work
   
-  const table = document.getElementById("table")
-  const tr = document.createElement("tr")
-  const td = document.createElement("td")
-  td.innerText = document.getElementById("book-title").value //Title
-  tr.appendChild(td)
-  const td2 = document.createElement("td")
-  td2.innerText=document.getElementById("book-author").value  //Author
-  tr.appendChild(td2)
-  const td3 = document.createElement("td")
-  td3.innerText=document.getElementById("book-pages").value  //Pages
-  tr.appendChild(td3)
-  const td4 = document.createElement("td")
-  td4.innerText=document.getElementById("answer").value //Read
-  tr.appendChild(td4)
-  table.appendChild(tr)
-
   document.getElementById('book-title').value = ``
   document.getElementById('book-author').value = ``
   document.getElementById('book-pages').value = ``
   document.getElementById('answer').value = ``
 
-
+  displayBooks(books)
 
  } 
 
