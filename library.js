@@ -1,16 +1,11 @@
 const books = [
   {
-    title: 'Book',
-    author: 'Name',
+    title: 'Harry Potter',
+    author: 'J.K Rowling',
     pages: '200',
     read: 'yes'
-  },
-  {
-    title: 'Book2',
-    author: 'Name2',
-    pages: '120',
-    read: 'no'
   }
+ 
 ]
 
 
@@ -48,7 +43,7 @@ const td4 = document.createElement("td")
 td4.classList.add("read")
 td4.innerText=book.read //Read
 tr.appendChild(td4)
-const delBtn = document.createElement("p")
+const delBtn = document.createElement("td")
 delBtn.classList.add("delete-button")
 delBtn.innerText='DEL'
 
