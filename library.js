@@ -18,6 +18,10 @@ const listOfBooks = document.getElementById('listOfBooks')
 //console.log(library)
 
 function displayBooks(books){
+
+let memory = JSON.parse(localStorage.getItem("Library2024"))
+
+if(memory){books = memory}
 const table = document.getElementById("table")
 table.innerHTML=`  <tr>
               <th>Title</th>
@@ -51,6 +55,7 @@ delBtn.addEventListener("click", ()=>{
   let confirm = window.confirm("Are you sure you want to delete "+ book.title + " ?")
   if (!confirm){return}
   books.splice(index,1)
+  localStorage.setItem("Library2024", JSON.stringify(books)); //saves in local storage
   console.log(books)
   displayBooks(books)
 })
@@ -69,7 +74,7 @@ td4.addEventListener("click", function(){
     console.log(books)
   }
 
-  
+  localStorage.setItem("Library2024", JSON.stringify(books)) //saves in local storage
   })
 //td4.innerText=document.getElementById("answer").value //Read
 
@@ -91,10 +96,13 @@ if (title==`` | author==`` | pages==`` |read==`` ){return alert("Please insert a
 const book = new Book(title,author,pages,read)
 books.push(book)
 
+
 document.getElementById('book-title').value = ``
 document.getElementById('book-author').value = ``
 document.getElementById('book-pages').value = ``
 document.getElementById('answer').value = ``
+
+localStorage.setItem("Library2024", JSON.stringify(books)); //saves in local storage
 
 displayBooks(books)
 
