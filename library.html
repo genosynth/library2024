@@ -3,12 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Library</title>
     <script src="library.js" defer></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
-    <aside class="hidden">
+
+
+      <main>
+        <h1>LIBRARY</h1>
+        <div id="library">
+          
+      
+          
+          <table style="width:80%">
+            <tbody id ='table'>
+              <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Pages</th>
+                <th>Read</th>
+              </tr>
+             
+            </tbody>
+          </table>
+        </div>
+      </main>
+
+      <aside class="hidden" id="book-form">
         <form>
           <div class="form-input">
             <label for="book-title">Book Title</label>
@@ -31,30 +54,17 @@
           </div>
           <div class="form-buttons">
             <button type="button" onclick=addBook() class="submit-btn">Add book</button>
-            <button type="reset" class="reset-btn">Cancel</button>
+            <button type="reset" class="reset-btn" onclick="toggleClass()">Cancel</button>
           </div>
         </form>
+
+        
       </aside>
 
-      <main>
-        <div id="library">
-          <p><button type="button" class="new-book-btn">New Book</button></p>
-          <ul id="listOfBooks"></ul>
-          
-          <table style="width:100%">
-            <tbody id ='table'>
-              <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Pages</th>
-                <th>Read</th>
-              </tr>
-             
-            </tbody>
-          </table>
-        </div>
-      </main>
-
+      <section>
+        <p type="button" class="visible" onclick="toggleClass()" id="new-book-btn">New Book</p>
+      </section>
+      
     
     
 </body>

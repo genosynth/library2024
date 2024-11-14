@@ -1,3 +1,95 @@
 td {
     text-align: center;
 }
+
+th {
+   
+}
+
+tr {
+    justify-content:center ;
+    text-align: center;
+    
+}
+
+.hidden {
+   justify-items: center;
+   visibility: hidden;
+}
+
+.visible {
+
+    visibility: visible;
+    justify-items: center;
+}
+
+.new-book-btn {
+    
+    text-align: center;
+}
+
+
+.choice:hover{
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+
+.delete-button{
+    border: black solid;
+}
+
+.delete-button:hover {
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
+
+#library {
+   justify-items: center;
+   
+}
+
+.read {
+    cursor: pointer;
+}
+
+.read:hover {
+    
+    font-size: larger;
+    font-weight: 800;
+}
+
+section {
+    text-align: center;
+    padding: 5%;
+}
+
+
+
+tr th {
+    border: solid black;
+    text-align: center;
+}
+
+main h1 {
+
+    text-align: center;
+}
+
+aside {
+    padding: 5%;
+}
+
+section p {
+    font-size: 30px;
+    border: solid black;
+    margin: 0 35%;
+    
+   
+}
+
+section p:hover {
+    background-color: lightgreen;
+    cursor: pointer;
+}
