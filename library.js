@@ -14,71 +14,70 @@ return {title,author,pages,read}
 
 }
 
-const listOfBooks = document.getElementById('listOfBooks')
-//console.log(library)
 
 function displayBooks(books){
 
-let memory = JSON.parse(localStorage.getItem("Library2024"))
+  let memory = JSON.parse(localStorage.getItem("Library2024"))
 
-if(memory){books = memory}
-const table = document.getElementById("table")
-table.innerHTML=`  <tr>
-              <th>Title</th>
-              <th>Author</th>
-              <th>Pages</th>
-              <th>Read</th>
-            </tr>`
+  if(memory){books = memory}
+  const table = document.getElementById("table")
+  table.innerHTML=`  <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Pages</th>
+                <th>Read</th>
+              </tr>`
 
-books.map((book, index)=>{
-  
+  books.map((book, index)=>{
+    
 
-const tr = document.createElement("tr")
-const td = document.createElement("td")
-td.innerText = book.title //Title
-tr.appendChild(td)
-const td2 = document.createElement("td")
-td2.innerText=book.author  //Author
-tr.appendChild(td2)
-const td3 = document.createElement("td")
-td3.innerText=book.pages  //Pages
-tr.appendChild(td3)
-const td4 = document.createElement("td")
-td4.classList.add("read")
-td4.innerText=book.read //Read
-tr.appendChild(td4)
-const delBtn = document.createElement("td")
-delBtn.classList.add("delete-button")
-delBtn.innerText='DEL'
+  const tr = document.createElement("tr")
+  const td = document.createElement("td")
+  td.innerText = book.title //Title
+  tr.appendChild(td)
+  const td2 = document.createElement("td")
+  td2.innerText=book.author  //Author
+  tr.appendChild(td2)
+  const td3 = document.createElement("td")
+  td3.innerText=book.pages  //Pages
+  tr.appendChild(td3)
+  const td4 = document.createElement("td")
+  td4.classList.add("read")
+  td4.innerText=book.read //Read
+  tr.appendChild(td4)
+  const delBtn = document.createElement("td")
+  delBtn.classList.add("delete-button")
+  delBtn.innerText='DEL'
 
-delBtn.addEventListener("click", ()=>{  
-  let confirm = window.confirm("Are you sure you want to delete "+ book.title + " ?")
-  if (!confirm){return}
-  books.splice(index,1)
-  localStorage.setItem("Library2024", JSON.stringify(books)); //saves in local storage
-  console.log(books)
-  displayBooks(books)
-})
-tr.appendChild(delBtn)
-table.appendChild(tr)
-td4.addEventListener("click", function(){
-  //console.log(td4.innerText)
-  
-  if (book.read=="yes"){       
-    book.read="no"
-    displayBooks(books)
+  delBtn.addEventListener("click", ()=>{  
+    let confirm = window.confirm("Are you sure you want to delete "+ book.title + " ?")
+    if (!confirm){return}
+    books.splice(index,1)
+    localStorage.setItem("Library2024", JSON.stringify(books)); //saves in local storage
     console.log(books)
-  } else { 
-    book.read='yes'
     displayBooks(books)
-    console.log(books)
-  }
-
-  localStorage.setItem("Library2024", JSON.stringify(books)) //saves in local storage
   })
-//td4.innerText=document.getElementById("answer").value //Read
+  tr.appendChild(delBtn)
+  table.appendChild(tr)
+  td4.addEventListener("click", function(){
+        
+    if (book.read=="yes"){       
+      book.read="no"
+      localStorage.setItem("Library2024", JSON.stringify(books)) 
+      displayBooks(books)
+      //console.log(books)
+    } else { 
+      book.read='yes'
+      localStorage.setItem("Library2024", JSON.stringify(books)) 
+      displayBooks(books)
+      //console.log(books)
+    }
 
-})   
+ 
+    })
+
+
+  })   
  
 }
 
@@ -93,8 +92,20 @@ let read = document.getElementById('answer').value
 
 if (title==`` | author==`` | pages==`` |read==`` ){return alert("Please insert all data.")}
 
+let memory = JSON.parse(localStorage.getItem("Library2024"))
 const book = new Book(title,author,pages,read)
-books.push(book)
+
+if(memory){
+  memory.push(book)
+  localStorage.setItem("Library2024", JSON.stringify(memory))
+  displayBooks(memory)
+}
+if(!memory){
+  books.push(book)
+  localStorage.setItem("Library2024", JSON.stringify(books)); //saves in local storage
+  displayBooks(books)
+}
+
 
 
 document.getElementById('book-title').value = ``
@@ -102,9 +113,7 @@ document.getElementById('book-author').value = ``
 document.getElementById('book-pages').value = ``
 document.getElementById('answer').value = ``
 
-localStorage.setItem("Library2024", JSON.stringify(books)); //saves in local storage
 
-displayBooks(books)
 
 toggleClass() //to hide  add book info and show new book button again
 
@@ -125,13 +134,13 @@ if (newBookButton.className == "hidden"){
 
 }
 
-displayBooks(books)
-
 document.addEventListener("keypress", function(event) { // pressing enter key when entering new book form fix
   if (event.key === "Enter" && document.getElementById('book-form').className=="visible") {
     addBook()
   }
 })
-//addBook()
+
+
+displayBooks(books)
 
 console.log(books)
