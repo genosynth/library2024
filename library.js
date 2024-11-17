@@ -143,4 +143,3 @@ document.addEventListener("keypress", function(event) { // pressing enter key wh
 
 displayBooks(books)
 
-console.log(books)
